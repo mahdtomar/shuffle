@@ -39,9 +39,9 @@ add.addEventListener("click", () => {
     list.appendChild(currentDiv);
 
     currentSettings.childNodes[1].addEventListener("click", (e) => {
+      window.localStorage.removeItem("list");
       e.target.parentElement.parentElement.remove();
       console.log(e.target);
-      window.localStorage.setItem("list", list.innerHTML);
     });
     window.localStorage.setItem("list", list.innerHTML);
   }
@@ -87,7 +87,9 @@ shuffle.addEventListener("click", () => {
   finalList.forEach((element) => {
     display.appendChild(element);
   });
-  window.localStorage.setItem("list", list.innerHTML);
+  let sumContainer = p.cloneNode()
+  sumContainer.innerHTML = ` the sum is: ${sum}`;
+  display.appendChild(sumContainer)
 });
 
 
