@@ -55,13 +55,18 @@ shuffle.addEventListener("click", () => {
   let arrayTotalDonators = Array.from(totalDonators);
   let finalList = [];
   for (i = 0; i < arrayTotalDonations.length; i++) {
-    let currentP = p.cloneNode();
-    currentP.classList.add("competitor");
-    currentP.innerHTML = `${i+1}>${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
-    finalList.push(currentP);
+    for (k = 0; k < +arrayTotalDonations[i].textContent; k++) {
+      let currentP = p.cloneNode();
+      currentP.classList.add("competitor");
+      currentP.innerHTML = `>${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
+      console.log(k);
+      finalList.push(currentP);
+    }
+    // console.log(+arrayTotalDonations[i].textContent)
   }
-  console.log(arrayTotalDonators[2]);
-  console.log(arrayTotalDonations[2]);
+
+  // console.log(arrayTotalDonators[2]);
+  // console.log(arrayTotalDonations[2]);
   let sum = 0;
   Array.from(totalDonatinos).map((e) => {
     sum += +e.textContent;
@@ -83,18 +88,31 @@ shuffle.addEventListener("click", () => {
     return array;
   }
   console.log(finalList);
+
   shuffler(finalList);
-  finalList.forEach((element,index) => {
-    display.appendChild(element);
-  });
-  let sumContainer = p.cloneNode()
+  for (l = 0; l < finalList.length; l++) {
+    // finalList[l].textContent = `${l}${finalList[l]}`
+    // finalList[l].innerHTML = `${l}${finalList[l]}`
+    let currentSpan = span.cloneNode();
+    currentSpan.textContent = `${l + 1}${finalList[l].textContent}`;
+    // let currentP = p.cloneNode()
+    display.appendChild(currentSpan);
+    // display.appendChild(currentP)
+  }
+  // finalList.map((ele,index)=>{
+  //   ele = `${ele}`
+  //   display.appendChild(ele)
+  // })
+  // finalList.forEach((element,index) => {
+  //   display.appendChild(element);
+  // });
+  let sumContainer = p.cloneNode();
   sumContainer.innerHTML = ` the sum is: ${sum}`;
-  display.appendChild(sumContainer)
+  display.appendChild(sumContainer);
 });
 
-
-clearAll.addEventListener("click",()=>{
-  window.localStorage.clear()
-  list.innerHTML=""
-  display.innerHTML=''
-})
+clearAll.addEventListener("click", () => {
+  window.localStorage.clear();
+  list.innerHTML = "";
+  display.innerHTML = "";
+});

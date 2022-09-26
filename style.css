@@ -129,7 +129,8 @@ body .container .list div p {
   background-color: #a2b5bb;
 }
 
-.display p {
+.display span {
+  display: block;
   background-color: #cfd2cf;
   width: 50%;
   text-align: center;
