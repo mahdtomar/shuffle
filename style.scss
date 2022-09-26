@@ -23,7 +23,7 @@ body {
       input{
         font-size: 1em;
       }
-      .add, .shuffle{
+      .btn{
         padding: 8px;
         background-color: #a2b5bb;
         font-size: 1em;
@@ -78,5 +78,16 @@ body {
         }
       }
     }
+  }
+}
+.display{
+  width: 100%;
+  margin:20px auto;
+  background-color: #a2b5bb;
+  p{
+    background-color: #cfd2cf;
+    width: 50%;
+    text-align: center;
+    margin: auto;
   }
 }

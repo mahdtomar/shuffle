@@ -45,7 +45,7 @@ body .container .menu input {
   font-size: 1em;
 }
 
-body .container .menu .add, body .container .menu .shuffle {
+body .container .menu .btn {
   padding: 8px;
   background-color: #a2b5bb;
   font-size: 1em;
@@ -121,5 +121,18 @@ body .container .list div p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.display {
+  width: 100%;
+  margin: 20px auto;
+  background-color: #a2b5bb;
+}
+
+.display p {
+  background-color: #cfd2cf;
+  width: 50%;
+  text-align: center;
+  margin: auto;
 }
 /*# sourceMappingURL=style.css.map */

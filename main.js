@@ -1,4 +1,3 @@
-// import fs from "fs";
 const name = document.querySelector(".name-field");
 const donation = document.querySelector(".value-field");
 const add = document.querySelector(".add");
@@ -9,6 +8,9 @@ const span = document.createElement("span");
 const settings = document.querySelector(".settings");
 const shuffle = document.querySelector(".shuffle");
 const display = document.querySelector(".display");
+list.innerHTML = window.localStorage.getItem("list");
+const clearAll = document.querySelector(".clearAll");
+// window.onload()
 add.addEventListener("click", () => {
   if (name.value == "" || donation.value == "") {
     alert("please enter a name and donation value");
@@ -22,9 +24,6 @@ add.addEventListener("click", () => {
       bbj.unshift(listArray[key]);
       i++;
     }
-    // console.log(listArray);
-    // console.log("333333333333333333333333333333333333333333333");
-    // console.log(bbj);
     let currentSettings = settings.cloneNode("true");
     let currentDiv = div.cloneNode("true");
     let currentP = p.cloneNode("true");
@@ -37,14 +36,14 @@ add.addEventListener("click", () => {
     currentDiv.appendChild(currentP);
     currentDiv.appendChild(currentSpan);
     currentDiv.appendChild(currentSettings);
-    // currentP.appendChild(currentSpan);
     list.appendChild(currentDiv);
 
     currentSettings.childNodes[1].addEventListener("click", (e) => {
       e.target.parentElement.parentElement.remove();
+      console.log(e.target);
+      window.localStorage.setItem("list", list.innerHTML);
     });
-
-    // const nodelistToArray = totalDonatinos.apply(null, totalDonatinos);
+    window.localStorage.setItem("list", list.innerHTML);
   }
 });
 
@@ -54,7 +53,13 @@ shuffle.addEventListener("click", () => {
   let totalDonators = document.querySelectorAll(".donator");
   let arrayTotalDonations = Array.from(totalDonatinos);
   let arrayTotalDonators = Array.from(totalDonators);
-  for (i = 0; i < arrayTotalDonations.length; i++) {}
+  let finalList = [];
+  for (i = 0; i < arrayTotalDonations.length; i++) {
+    let currentP = p.cloneNode();
+    currentP.classList.add("competitor");
+    currentP.innerHTML = `${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
+    finalList.push(currentP);
+  }
   console.log(arrayTotalDonators[2]);
   console.log(arrayTotalDonations[2]);
   let sum = 0;
@@ -63,7 +68,6 @@ shuffle.addEventListener("click", () => {
     return sum;
   });
   console.log(sum);
-  let finalList = Array.from(document.querySelectorAll(".competitor"));
 
   function shuffler(array) {
     let currentIndex = array.length,
@@ -78,15 +82,17 @@ shuffle.addEventListener("click", () => {
     }
     return array;
   }
-
-  // Used like so
-  var arr = [2, 11, 37, 42];
+  console.log(finalList);
   shuffler(finalList);
   finalList.forEach((element) => {
-    let currentP = p.cloneNode();
-    currentP.classList.add("competitor");
-    currentP.innerHTML = `${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
-    display.appendChild(currentP);
+    display.appendChild(element);
   });
+  window.localStorage.setItem("list", list.innerHTML);
 });
-// currentP.innerHTML = `${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
+
+
+clearAll.addEventListener("click",()=>{
+  window.localStorage.clear()
+  list.innerHTML=""
+  display.innerHTML=''
+})
