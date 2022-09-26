@@ -57,7 +57,7 @@ shuffle.addEventListener("click", () => {
   for (i = 0; i < arrayTotalDonations.length; i++) {
     let currentP = p.cloneNode();
     currentP.classList.add("competitor");
-    currentP.innerHTML = `${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
+    currentP.innerHTML = `${i+1}>${arrayTotalDonations[i].textContent} ${arrayTotalDonators[i].textContent}`;
     finalList.push(currentP);
   }
   console.log(arrayTotalDonators[2]);
@@ -84,7 +84,7 @@ shuffle.addEventListener("click", () => {
   }
   console.log(finalList);
   shuffler(finalList);
-  finalList.forEach((element) => {
+  finalList.forEach((element,index) => {
     display.appendChild(element);
   });
   let sumContainer = p.cloneNode()
